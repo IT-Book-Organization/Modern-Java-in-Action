@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class FilteringApples {
 
@@ -36,6 +37,11 @@ public class FilteringApples {
         // []
         List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 || "brown".equals(a.getColor()));
         System.out.println(weirdApples);
+
+        //순차 처리 방식의 stream
+        inventory.stream().filter((Apple a) -> a.getWeight() > 150).collect(Collectors.toList());
+        //병렬 처리 방식의 stream
+        inventory.parallelStream().filter((Apple a) -> a.getWeight() > 150).collect(Collectors.toList());
     }
 
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
