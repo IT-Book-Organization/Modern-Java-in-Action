@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
+import java.lang.*;
 public class FilteringApples {
 
   public static void main(String... args) {
@@ -61,6 +61,17 @@ public class FilteringApples {
 
 
     inventory.sort((o1, o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
+
+    // Thread
+
+    Thread t = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        System.out.println("Hello world");
+      }
+    });
+
+    Thread tLambda = new Thread(() -> System.out.println("Hello world"));
 
 
     // Callable
