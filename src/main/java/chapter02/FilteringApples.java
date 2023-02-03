@@ -40,6 +40,8 @@ public class FilteringApples {
       }
     });
     System.out.println(redApples2);
+
+    List<Apple> redApples3 = filter(inventory, a -> a.getColor() == Color.RED);
   }
 
   public static List<Apple> filterGreenApples(List<Apple> inventory) {
