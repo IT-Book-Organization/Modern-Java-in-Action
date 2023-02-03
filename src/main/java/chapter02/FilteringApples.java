@@ -2,6 +2,7 @@ package chapter02;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class FilteringApples {
@@ -42,6 +43,15 @@ public class FilteringApples {
     System.out.println(redApples2);
 
     List<Apple> redApples3 = filter(inventory, a -> a.getColor() == Color.RED);
+
+    inventory.sort(new Comparator<Apple>() {
+      @Override
+      public int compare(Apple o1, Apple o2) {
+        return Integer.compare(o1.getWeight(), o2.getWeight());
+      }
+    });
+
+    inventory.sort((o1, o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
   }
 
   public static List<Apple> filterGreenApples(List<Apple> inventory) {
