@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class FilteringApples {
 
@@ -52,6 +56,9 @@ public class FilteringApples {
     });
 
     inventory.sort((o1, o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
+
+    ExecutorService executorService = Executors.newCachedThreadPool();
+    Future<String> threadName = executorService.submit(() -> Thread.currentThread().getName());
   }
 
   public static List<Apple> filterGreenApples(List<Apple> inventory) {
