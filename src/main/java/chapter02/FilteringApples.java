@@ -1,5 +1,8 @@
 package chapter02;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -48,6 +51,7 @@ public class FilteringApples {
 
     List<Apple> redApples3 = filter(inventory, a -> a.getColor() == Color.RED);
 
+    // Comparator
     inventory.sort(new Comparator<Apple>() {
       @Override
       public int compare(Apple o1, Apple o2) {
@@ -55,10 +59,33 @@ public class FilteringApples {
       }
     });
 
+
     inventory.sort((o1, o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
 
+
+    // Callable
     ExecutorService executorService = Executors.newCachedThreadPool();
-    Future<String> threadName = executorService.submit(() -> Thread.currentThread().getName());
+    Future<String> threadName = executorService.submit(new Callable<String>() {
+      @Override
+      public String call() throws Exception {
+        return Thread.currentThread().getName();
+      }
+    });
+
+    Future<String> threadNameLambda = executorService.submit(() -> Thread.currentThread().getName());
+
+
+    // GUI
+    Button button = new Button("Send");
+    button.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        button.setLabel("Sent!!");
+      }
+    });
+
+    button.addActionListener(e -> button.setLabel("Sent!!"));
+
   }
 
   public static List<Apple> filterGreenApples(List<Apple> inventory) {
