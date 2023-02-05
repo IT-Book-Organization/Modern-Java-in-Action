@@ -14,6 +14,11 @@ public class Main {
                 Arrays.asList(1,2,3,4,5),
                 (Integer i) -> System.out.println(i)
         );
+
+        List<Integer> integerList = map(
+                Arrays.asList("모던", "", "자바", "인", "", "액션"),
+                (String s) -> s.length()
+        );
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {
@@ -30,5 +35,13 @@ public class Main {
         for (T t : list) {
             c.accept(t);
         }
+    }
+
+    public static <T, R> List<R> map(List<T> list, Function<T, R> f) {
+        List<R> result = new ArrayList<>();
+        for (T t : list) {
+            result.add(f.apply(t));
+        }
+        return result;
     }
 }
