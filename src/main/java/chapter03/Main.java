@@ -19,6 +19,16 @@ public class Main {
                 Arrays.asList("모던", "", "자바", "인", "", "액션"),
                 (String s) -> s.length()
         );
+
+        // 박싱 되지 않음
+        IntPredicate evenNumbers = (int i) -> i % 2 == 0;
+        evenNumbers.test(1000);
+
+        // int 형값이 Integer 타입으로 오토박싱 됨
+        Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
+        evenNumbers.test(1000);
+
+
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {
