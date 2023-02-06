@@ -1,10 +1,15 @@
 package chapter03;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public class Main {
+
+    static Map<String , Function<Integer, Fruit>> map = new HashMap<>();
+    static {
+        map.put("apple", Apple::new);
+    }
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("모던","","자바","인","","액션");
         Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
@@ -28,6 +33,17 @@ public class Main {
         Predicate<Integer> oddNumbers = (Integer i) -> i % 2 != 0;
         evenNumbers.test(1000);
 
+        Supplier<Apple> c1 = Apple::new;
+        Apple apple = c1.get();
+
+        Function<Integer, Apple> c2 = Apple::new;
+        Apple apple2 = c2.apply(100);
+
+        List<Integer> weights = Arrays.asList(1, 2, 3, 4);
+        List<Apple> apples = map(weights, Apple::new);
+
+        BiFunction<Color ,Integer, Apple> c3 = (color, integer) -> new Apple(color,integer);
+        Apple apple3 = c3.apply(Color.RED,100);
 
     }
 
@@ -53,5 +69,8 @@ public class Main {
             result.add(f.apply(t));
         }
         return result;
+    }
+    public static Fruit getFruit(String fruit, Integer weight) {
+        return map.get(fruit.toLowerCase()).apply(weight);
     }
 }
