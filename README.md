@@ -1,9 +1,11 @@
 # Modern-Java-in-Action
-[Modern JAVA in Action : 전문가를 위한 자바 8,9,10 기법 가이드](http://www.yes24.com/Product/Goods/77125987?pid=123487&cosemkid=go15646485055614872&gclid=Cj0KCQiA2-2eBhClARIsAGLQ2RnfiJRiNBVIJE4-RqUStA8sxbbPufA-nPNX5vp8FqJbyzkGq_XjvR4aAuAhEALw_wcB)를 읽고, 그 내용과 개념을 정리한 레포지토리입니다.
+
+[Modern Java in Action : 전문가를 위한 자바 8, 9, 10 기법 가이드](http://www.yes24.com/Product/Goods/77125987?pid=123487&cosemkid=go15646485055614872&gclid=Cj0KCQiA2-2eBhClARIsAGLQ2RnfiJRiNBVIJE4-RqUStA8sxbbPufA-nPNX5vp8FqJbyzkGq_XjvR4aAuAhEALw_wcB)를
+읽고, 그 내용과 개념을 정리한 레포지토리입니다.
 
 잘못된 내용은 이슈와 PR로 알려주세요 🥰
 
-## 📌 Modern JAVA in Action : 전문가를 위한 자바 8,9,10 기법 가이드
+## 📌 Modern Java in Action : 전문가를 위한 자바 8, 9, 10 기법 가이드
 
 ### Part Ⅰ 기초
 
