@@ -8,8 +8,8 @@
 ### Part Ⅰ 기초
 
 - [Chapter 1 - 자바 8, 9, 10, 11 : 무슨 일이 일어나고 있는가](./Chapter_01)
-- Chapter 2 - 동작 파라미터화 코드 전달하기
-- Chapter 3 - 람다 표현식
+- [Chapter 2 - 동작 파라미터화 코드 전달하기](./Chapter_02)
+- [Chapter 3 - 람다 표현식](./Chapter_03)
 
 ### Part Ⅱ 함수형 데이터 처리
 
