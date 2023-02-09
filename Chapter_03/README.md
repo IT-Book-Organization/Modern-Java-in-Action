@@ -22,7 +22,7 @@
     - 메서드를 따로 정의하지 않아도 되어 구현해야할 코드에 대한 걱정거리가 줄어든다.
 - 함수
     - 람다는 메서드처럼 특정 클래스에 종속되지 않으므로 함수라고 부른다.
-    - 메서드처럼 파라미터 리스터, 바디, 반환 형식, 가능한 예외 리스트를 포함한다.
+    - 메서드처럼 파라미터 리스트, 바디, 반환 형식, 가능한 예외 리스트를 포함한다.
 - 전달
     - 람다 표현식을 메서드 인수로 전달하거나 변수로 저장할 수 있다.
 - 간결성
@@ -169,7 +169,7 @@ process(() -> System.out.println("함수형 인터페이스"));
 
 ```java
 public String processFile() throw IOException {
-	// try-with-resource 
+	// try-with-resources 
 	// try 문이 끝나면 자원도 반납한다.
 	try (
       BufferedReader br =new BufferedReader(new FileReader("test.txt"))) {
@@ -203,12 +203,12 @@ String result = processFile((BufferedReader br) -> br.readLine() + br.readLine()
 
 ### 3.3.2 2단계 : **함수형 인터페이스**
 
-함수형 인터페이스 자리에 람다를 사용할 수 `있으므로 BufferedReader -> String`과 `IOException`을 던질 수 있는 시그니처와 일치하는 함수형 인터페이스를 만들어야 한다.
+함수형 인터페이스 자리에 람다를 사용할 수 있으므로 `BufferedReader -> String`과 `IOException`을 던질 수 있는 시그니처와 일치하는 함수형 인터페이스를 만들어야 한다.
 
 ```java
 @FunctionalInterface
 public interface BufferedReaderProcessor {
-  String process(BufferedReader b)throws IOExeption;
+  String process(BufferedReader b)throws IOException;
 }
 
 // 위 함수형 인터페이스를 processFile 메서드의 인수로 전달한다.
@@ -294,7 +294,7 @@ public class Main {
 
 ### 3.4.2 Consumer<T>
 
-`Consumer` 인터페이스는 제너릭 형식 `T` 객체를 받아서 `void`를 반환하는 `acccept` 라는 추상 메서드를 정의한다.
+`Consumer` 인터페이스는 제너릭 형식 `T` 객체를 받아서 `void`를 반환하는 `accept` 라는 추상 메서드를 정의한다.
 
 `T` 형식의 객체를 인수로 받아서 어떤 동작을 수행하고 싶을 때 `Consumer` 인터페이스를 사용할 수 있다.
 
@@ -328,7 +328,7 @@ public class Main {
 
 ### 3.4.3 Function<T, R>
 
-`Function<T, R>` 인터페이스는 제너력 형식 T를 인수로 받아서 제너력 형식 `R` 객체를 반환하는 추상 메서드 `apply`를 정의한다.
+`Function<T, R>` 인터페이스는 제너릭 형식 T를 인수로 받아서 제너릭 형식 `R` 객체를 반환하는 추상 메서드 `apply`를 정의한다.
 
 입력을 출력으로 매핑하는 람다를 정의할 때 `Function` 인터페이스를 활용할 수 있다.
 
@@ -408,7 +408,7 @@ e.g.
 ```java
 @FunctionalInterface
 public interface BufferedReaderProcessor {
-  String process(BufferedReader b)throws IOExeption;
+  String process(BufferedReader b)throws IOException;
 }
 
 BufferedReaderProcessor p = (BufferedReader br) -> br.readLine(); 
@@ -416,7 +416,7 @@ BufferedReaderProcessor p = (BufferedReader br) -> br.readLine();
 
 <br/>
 
-그러나 우리는 Funtion<T, R> 형식의 함수형 인터페이스를 기대하는 API를 사용하고 있고, 직접 함수형 인터페이스를 만들기 어려운 상황이다.
+그러나 우리는 Function<T, R> 형식의 함수형 인터페이스를 기대하는 API를 사용하고 있고, 직접 함수형 인터페이스를 만들기 어려운 상황이다.
 
 이러한 상황에서는 람다 표현식에서 명시적으로 확인된 예외를 잡을 수 있다.
 
@@ -792,7 +792,7 @@ Compartator의 함수 디스크립터는 `<T,T> -> int` 이고, 우리는 사과
 inventory.sort((Apple a1, Apple a2) -> a1.getWeight() - a2.getWeight());
 
 // 자바 컴파일러는 형식을 추론한다. 
-// 즉, 컴파일러가 inventory 내부 원소의 자료형이 Appled임을 알게되어 a1과 a2의 형식을 지정하지 않아도 됨.
+// 즉, 컴파일러가 inventory 내부 원소의 자료형이 Apple임을 알게되어 a1과 a2의 형식을 지정하지 않아도 됨.
 inventory.sort((a1, a2) -> a1.getWeight() - a2.getWeight());
 ```
 
@@ -801,7 +801,7 @@ inventory.sort((a1, a2) -> a1.getWeight() - a2.getWeight());
 Comparator는 Comparable 키를 추출해서 Comparator 객체로 만드는 Function 함수를 인수로 받는 정적 메서드 comparing을 포함한다.
 
 ```java
-//comparing 메소드는 비교하는데 사용될 값을 Funtion<T,R> 인터페이스로 받아서 Comparator를 반환
+//comparing 메소드는 비교하는데 사용될 값을 Function<T,R> 인터페이스로 받아서 Comparator를 반환
 Comparator<Apple> c = Comparator.comparing((Apple a) -> a.getWeight());
 
 // c 변수를 생성해 넣어도 되지만 아래처럼 한줄로 간소화한다.
@@ -852,7 +852,7 @@ inventory.sort(comparing(Apple::getWeight).reversed());
 
 ```java
 // 무게가 같으면 색깔별로 정렬
-inventory.sort(comparing(Apple::getWeight).reversed().thenComparing(Apple::getColor));
+inventory.sort(comparing(Apple::getWeight).reversed().theComparing(Apple::getColor));
 ```
 
 <br/>
