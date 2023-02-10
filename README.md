@@ -9,15 +9,15 @@
 
 ### Part Ⅰ 기초
 
-- [Chapter 1 - 자바 8, 9, 10, 11 : 무슨 일이 일어나고 있는가](./Chapter_01)
-- [Chapter 2 - 동작 파라미터화 코드 전달하기](./Chapter_02)
-- [Chapter 3 - 람다 표현식](./Chapter_03)
+- [Chapter 1 - 자바 8, 9, 10, 11 : 무슨 일이 일어나고 있는가](/Chapter_01)
+- [Chapter 2 - 동작 파라미터화 코드 전달하기](/Chapter_02)
+- [Chapter 3 - 람다 표현식](/Chapter_03)
 
 ### Part Ⅱ 함수형 데이터 처리
 
-- Chapter 4 - 스트림 소개
-- Chapter 5 - 스트림 활용
-- Chapter 6 - 스트림으로 데이터 수집
+- [Chapter 4 - 스트림 소개](/Chapter_04)
+- [Chapter 5 - 스트림 활용](/Chapter_05)
+- [Chapter 6 - 스트림으로 데이터 수집](/Chapter_06)
 - Chapter 7 - 병렬 데이터 처리와 성능
 
 ### Part Ⅲ 스트림과 람다를 이용한 효과적 프로그래밍
