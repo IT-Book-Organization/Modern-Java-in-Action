@@ -1,21 +1,23 @@
 # Modern-Java-in-Action
-[Modern JAVA in Action : 전문가를 위한 자바 8,9,10 기법 가이드](http://www.yes24.com/Product/Goods/77125987?pid=123487&cosemkid=go15646485055614872&gclid=Cj0KCQiA2-2eBhClARIsAGLQ2RnfiJRiNBVIJE4-RqUStA8sxbbPufA-nPNX5vp8FqJbyzkGq_XjvR4aAuAhEALw_wcB)를 읽고, 그 내용과 개념을 정리한 레포지토리입니다.
+
+[Modern Java in Action : 전문가를 위한 자바 8, 9, 10 기법 가이드](http://www.yes24.com/Product/Goods/77125987?pid=123487&cosemkid=go15646485055614872&gclid=Cj0KCQiA2-2eBhClARIsAGLQ2RnfiJRiNBVIJE4-RqUStA8sxbbPufA-nPNX5vp8FqJbyzkGq_XjvR4aAuAhEALw_wcB)를
+읽고, 그 내용과 개념을 정리한 레포지토리입니다.
 
 잘못된 내용은 이슈와 PR로 알려주세요 🥰
 
-## 📌 Modern JAVA in Action : 전문가를 위한 자바 8,9,10 기법 가이드
+## 📌 Modern Java in Action : 전문가를 위한 자바 8, 9, 10 기법 가이드
 
 ### Part Ⅰ 기초
 
-- [Chapter 1 - 자바 8, 9, 10, 11 : 무슨 일이 일어나고 있는가](./Chapter_01)
-- [Chapter 2 - 동작 파라미터화 코드 전달하기](./Chapter_02)
-- [Chapter 3 - 람다 표현식](./Chapter_03)
+- [Chapter 1 - 자바 8, 9, 10, 11 : 무슨 일이 일어나고 있는가](/Chapter_01)
+- [Chapter 2 - 동작 파라미터화 코드 전달하기](/Chapter_02)
+- [Chapter 3 - 람다 표현식](/Chapter_03)
 
 ### Part Ⅱ 함수형 데이터 처리
 
-- Chapter 4 - 스트림 소개
-- Chapter 5 - 스트림 활용
-- Chapter 6 - 스트림으로 데이터 수집
+- [Chapter 4 - 스트림 소개](/Chapter_04)
+- [Chapter 5 - 스트림 활용](/Chapter_05)
+- [Chapter 6 - 스트림으로 데이터 수집](/Chapter_06)
 - Chapter 7 - 병렬 데이터 처리와 성능
 
 ### Part Ⅲ 스트림과 람다를 이용한 효과적 프로그래밍

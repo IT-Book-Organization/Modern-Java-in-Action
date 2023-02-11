@@ -1,3 +1,4 @@
+/*
 plugins {
     id 'java'
 }
@@ -17,3 +18,49 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+ //*/
+
+// for src/main/java/chapter07/ParallelStreamBenchmark.java
+//*
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    api 'org.openjdk.jmh:jmh-core:1.21'
+    api 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
+    api 'io.reactivex.rxjava2:rxjava:2.2.2'
+    api 'com.typesafe.akka:akka-actor_2.12:2.5.16'
+    api 'com.typesafe.akka:akka-stream_2.12:2.5.16'
+    api 'junit:junit:4.12'
+}
+
+group = 'manning'
+version = '2.0'
+description = 'modernjavainaction'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
+//*/
