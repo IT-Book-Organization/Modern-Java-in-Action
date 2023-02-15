@@ -108,7 +108,7 @@ System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "12")
 
 <br/>
 
-<p align="center"><img width="650" alt="포크:조인 과정" src="https://user-images.githubusercontent.com/86337233/218249500-911ab5ad-a8d2-4743-9901-32cd5f169bf8.png">
+<p align="center"><img width="300" alt="iterate" src="https://user-images.githubusercontent.com/86337233/218249511-10d0051b-20ae-4204-bd9d-bf35b4d501a0.png">
 
 <br/>
 <br/>
@@ -264,7 +264,7 @@ e.g., Collector의 combiner 메서드
 
 <br/>
 
-<p align="center"><img width="650" alt="ForkJoinSumCalculator" src="https://user-images.githubusercontent.com/86337233/218249505-cc830cb3-6182-43d8-9fec-9af137ffdab5.png">
+<p align="center"><img width="400" alt="분해성" src="https://user-images.githubusercontent.com/86337233/218249508-3aee6a50-c413-45da-ac2e-1af90044f45a.png">
 
 <br/>
 <br/>
@@ -316,7 +316,8 @@ if (태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 
 <br/>
 
-<p align="center"><img width="400" alt="분해성" src="https://user-images.githubusercontent.com/86337233/218249508-3aee6a50-c413-45da-ac2e-1af90044f45a.png">
+<p align="center"><img width="650" alt="포크:조인 과정" src="https://user-images.githubusercontent.com/86337233/218249500-911ab5ad-a8d2-4743-9901-32cd5f169bf8.png">
+
 
 <br/>
 <br/>
@@ -329,7 +330,8 @@ if (태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 
 <br/>
 
-<p align="center"><img width="700" alt="작업 훔치기 알고리즘" src="https://user-images.githubusercontent.com/86337233/218249509-c7da0d8d-0ef5-4cef-a211-3287a4baf092.png">
+<p align="center"><img width="650" alt="ForkJoinSumCalculator" src="https://user-images.githubusercontent.com/86337233/218249505-cc830cb3-6182-43d8-9fec-9af137ffdab5.png">
+
 
 <br/>
 <br/>
@@ -391,7 +393,7 @@ if (태스크가 충분히 작거나 더 이상 분할할 수 없으면) {
 
 <br/>
 
-<p align="center"><img width="300" alt="iterate" src="https://user-images.githubusercontent.com/86337233/218249511-10d0051b-20ae-4204-bd9d-bf35b4d501a0.png">
+<p align="center"><img width="700" alt="작업 훔치기 알고리즘" src="https://user-images.githubusercontent.com/86337233/218249509-c7da0d8d-0ef5-4cef-a211-3287a4baf092.png">
 
 <br/>
 <br/>
