@@ -22,9 +22,9 @@
 
 ### Part Ⅲ 스트림과 람다를 이용한 효과적 프로그래밍
 
-- Chapter 8 - 컬렉션 API 개선
-- Chapter 9 - 리팩터링, 테스팅, 디버깅
-- Chapter 10 - 람다를 이용한 도메인 전용 언어
+- [Chapter 8 - 컬렉션 API 개선](/Chapter_08)
+- [Chapter 9 - 리팩터링, 테스팅, 디버깅](/Chapter_09)
+- [Chapter 10 - 람다를 이용한 도메인 전용 언어](/Chapter_10)
 
 ### Part Ⅳ 매일 자바와 함께
 
