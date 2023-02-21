@@ -4,7 +4,7 @@
 
 ### 9.1.1 코드 가독성 개선
 
-자바 8의 새 기능을 이용해 코드를 간뎔하고 이해하기 쉽게 만들 수 있다.
+자바 8의 새 기능을 이용해 코드를 간결하고 이해하기 쉽게 만들 수 있다.
 
 세 가지 리팩터링 예제
 
@@ -14,7 +14,7 @@
 
 <br/>
 
-### 9.1.2 익명 클래스를 람다 표현식으로 리팩터링 하기
+### 9.1.2 익명 클래스를 람다 표현식으로 리팩터링하기
 
 익명 클래스를 람다 표현식으로 바꿔 리팩터링할 수 있다.
 
@@ -143,7 +143,7 @@ if (logger.isLoggable(Log.FINER)) {
 logger.log(Level.FINER, "Problem: " + generateDiagnostic());
 
 // 개선 2.
-// 람다를 통해 특정 조건에서만 메시지가 생성될 수 있도럭 생성과정을 연기
+// 람다를 통해 특정 조건에서만 메시지가 생성될 수 있도록 생성과정을 연기
 // 자바 8에 추가된 log 메서드의 시그니처
 // public void log(Level level, Supplier<String> msgSupplier)
 logger.log(Level.FINER, () -> "Problem: " + generateDiagnostic());
@@ -165,7 +165,7 @@ public void log(Level level, Supplier<String> msgSupplier) {
 e.g.
 
 ```java
-tring oneLine = processFile((BufferedReader b) -> b.readLine());
+String oneLine = processFile((BufferedReader b) -> b.readLine());
 String twoLines = processFile((BufferedReader b) -> b.readLine() + b.readLine());
 
 public static String processFile(BufferedReaderProcessor p) throws IOException {
@@ -226,7 +226,7 @@ Validator numericValidator = new Validator((String s) -> s.matches("[a-z]+"));
 
 ### 9.2.2 템플릿 메서드
 
-알고르짐의 개요를 제시한 다음에 알고리즘의 일부를 고칠 수 있는 유연함을 제공해야 할 때 템플릿 메서드 디자인 패턴을 이용한다.
+알고리즘의 개요를 제시한 다음에 알고리즘의 일부를 고칠 수 있는 유연함을 제공해야 할 때 템플릿 메서드 디자인 패턴을 이용한다.
 
 템플릿 메서드에서도 람다를 이용해서 문제를 해결할 수 있다.
 
@@ -256,11 +256,11 @@ new OnlineBankingLambda().processCustomer(1337, (Customer c) -> System.out.print
 
 ### 9.2.3 옵저버
 
-어떤 이벤트가 발생했을 대 한 객체가 다른 객체 리스트에 자동으로 알림을 보내는 상황에서 옵저버 디자인 패턴을 사용한다.
+어떤 이벤트가 발생했을 때 한 객체가 다른 객체 리스트에 자동으로 알림을 보내는 상황에서 옵저버 디자인 패턴을 사용한다.
 
 옵저버가 함수형 인터페이스일 때 람다를 사용하여 옵저버를 전달할 수 있다.
 
-그러나 옵저버가 상태를 가지며 여러 메서드를 정의해야한다면 기존의 클래스로 옵저버를 전달하는 방식이 바람직하다.
+그러나 옵저버가 상태를 가지며 여러 메서드를 정의해야 한다면 기존의 클래스로 옵저버를 전달하는 방식이 바람직하다.
 
 <br/>
 
@@ -387,7 +387,7 @@ ProcessingObject<String> p1 = new HeaderTextProcessing();
 ProcessingObject<String> p2 = new SpellCheckerProcessing();
 // 두 객체를 연결
 p1.setSuccessor(p2); 
-// p1.handle(r) -> r1 -> p2.hadle(r1) -> r2
+// p1.handle(r) -> r1 -> p2.handle(r1) -> r2
 String result = p1.handle("Aren't labdas really sexy?!!");
 ```
 
@@ -466,7 +466,7 @@ Map<String, TriFunction<Integer, Integer, String, Product>> map = new HashMap<>(
 e.g.
 
 ```java
-// 결국 람다는 함수형 인터페이싀 인스턴스를 생성한다.
+// 결국 람다는 함수형 인터페이스의 인스턴스를 생성한다.
 public class Point {
 	public final static Comparator<Point> compareByXAndThenY = comparing(Point::getX).thenComparing(Point::getY);
   
@@ -477,7 +477,7 @@ public class Point {
 public void testComparingTwoPoints() throws Exception {
 	Point p1 = new Point(10, 15);
 	Point p2 = new Point(10, 20);
-	int result = Point.compareByXAndThenY.compare(p1 , p2);
+	int result = Point.compareByXAndThenY.compare(p1, p2);
 	assertTrue(result < 0);
 }
 ```
@@ -640,7 +640,7 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 
 스트림의 파이프라인 연산을 로깅할 때 스트림 파이프라인에 적용된 각각의 연산이 어떤 결과를 도출하는지 peek이라는 스트림 연산을 활용할 수 있다.
 
-forEach로도 출력 혹은 로깅할 수 있으나 forEach는 전체 스트림이 소비되어버린다.
+forEach로도 출력 혹은 로깅할 수 있으나 forEach는 전체 스트림이 소비되어 버린다.
 
 그러나 peek은 소비한 것처럼 동작하나 실제로 소비하지는 않는다.
 
