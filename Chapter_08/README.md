@@ -1,6 +1,6 @@
 # Chapter8. 컬렉션 API 개선
 
-## 8.1 컬랙션 팩토리
+## 8.1 컬렉션 팩토리
 
 자바 8 버전에서는 `Arrays.asList()` 메서드를 이용하여 리스트를 만들 수 있다.
 
@@ -15,7 +15,7 @@ abc.add("ds");
 
 ### UnsupportedOperationException 예외 발생
 
-내부적으로 고정된 크기의 변환할 수 있는 배열로 구현되어있기 때문에 위처럼 만든 List는 요소를 갱신하는 작업은 괜찮지만, 요소를 삭제하거나 갱신하는 작업을 할 수 없다.
+내부적으로 고정된 크기의 변환할 수 있는 배열로 구현되어있기 때문에 위처럼 만든 List는 요소를 갱신하는 작업은 괜찮지만, 요소를 추가하거나 삭제하는 작업을 할 수 없다.
 
 <br/>
 
@@ -23,7 +23,7 @@ abc.add("ds");
 
 자바 9에서는 List.of 팩토리 메서드를 이용해서 간단하게 리스트를 만들 수 있다.
 
-그러나 이렇게 만들어진 리스트는 `set`과 `add`를 사용하면 `UnsupportedOperationException` 예외가 발생한다.
+그러나 이렇게 만들어진 리스트는 `add()`를 사용하면 `UnsupportedOperationException` 예외가 발생하며, `set()` 메서드로 아이템을 바꾸려해도 비슷한 예외가 발생한다.
 
 이런 제약은 의도치 않게 컬렉션이 변하는 것을 막아 꼭 나쁘지만은 않다.
 
@@ -33,7 +33,7 @@ abc.add("ds");
 
 ### 오버로딩 vs 가변 인수
 
-List 인터페이스를 보면 List.of의 다양한 오버로드 버전이 있다.
+List 인터페이스를 보면 List.of의 다양한 오버로드 버전이 있다. (Set.of와 Map.of에서도 이와 같은 패턴이 등장함)
 
 ```java
 static <E> List<E> of(E e1, E e2, E e3, E e4)
@@ -48,9 +48,11 @@ static <E> List<E> of(E e1, E e2, E e3, E e4, E e5)
 static <E> List<E> of(E... e)
 ```
 
-가변 인수는 추가 배열을 할당해서 라스트로 감싸야 하므로 배열을 할당하고 초기화하며 가비지 컬렉션을 하는 비용을 지불해야 한다.
+내부적으로 가변 인수는 추가 배열을 할당해서 리스트로 감싼다.
 
-10개 이상의 요소에 대해서는 물론 가변 인수를 받도록 구현되어 있다.
+따라서 배열을 할당하고 초기화하며 가비지 컬렉션을 하는 비용을 지불해야 한다.
+
+10개 이상의 요소에 대해서는 물론 가변 인수를 이용하도록 구현되어 있다.
 
 <br/>
 
@@ -59,6 +61,8 @@ static <E> List<E> of(E... e)
 `List.of` 메서드와 같은 방식으로 `Set.of` 메서드를 이용해 집합을 만들 수 있다.
 
 그러나 중복된 요소를 포함하여 만들면 예외를 발생시킨다.
+
+<br/>
 
 ### 8.1.3 맵 팩토리
 
@@ -103,8 +107,8 @@ for (Transaction transaction : transactions) {
 }
 
 // 위 코드의 실질적인 코드
-// for each는 iterator를 사용한다.
-// iterator의 상태와 transactions의 상태는 서로 동기화되지 않아 오류를 발생시킨다.
+// for-each 루프는 Iterator 객체를 사용한다.
+// Iterator의 상태와 transactions의 상태는 서로 동기화되지 않아 오류를 발생시킨다.
 
 for (Iterator<Transaction> iterator = transactions.iterator();
      iterator.hasNext(); ) {
@@ -114,7 +118,7 @@ for (Iterator<Transaction> iterator = transactions.iterator();
    }
 }
 
-// 해결 1번 iterator에서 직접 삭제
+// 해결 1번 Iterator에서 직접 삭제
 // 코드가 복잡하다.
 for (Iterator<Transaction> iterator = transactions.iterator(); iterator.hasNext();) {
 	Transaction transaction = iterator.next();
@@ -124,7 +128,7 @@ for (Iterator<Transaction> iterator = transactions.iterator(); iterator.hasNext(
 }
 
 // 해결 2번 removeIf 메서드 이용
-// Predicate<T> 를 인자로 받는다.
+// Predicate<T> 를 인수로 받는다.
 transactions.removeIf(transaction -> Character.isDigit(transaction.getReferenceCode().charAt(0)));
 ```
 
@@ -151,7 +155,7 @@ referenceCodes.replaceAll(code -> Character.toUpperCase(code.charAt(0)) + code.s
 
 <br/>
 
-## 8.3 맵처리
+## 8.3 맵 처리
 
 자바 8에서는 `Map` 인터페이스에 몇 가지 디폴트 메서드를 추가했다.
 
@@ -235,7 +239,7 @@ MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 // 키가 없다면 line과 계산된 해시 값이 key,value로 들어감
 lines.forEach(line -> dataToHash.computeIfAbsent(line,this::calculateDigest));
 
-// 키가 없다면 캐시값을 계산해서 반환
+// 키의 해시를 계산해서 반환
 private byte[] calculateDigest(String key) {
    return messageDigest.digest(key.getBytes(StandardCharsets.UTF_8));
 }
@@ -339,7 +343,7 @@ ConcurrentHashMap 클래스는 동시성 친화적이며 최신 기술을 반영
 
 - `forEach` : 키,값 쌍에 주어진 액션을 실행
 - `reduce` : 키,값 쌍에 제공된 리듀스 함수를 이용해 결과를 합침
-- `serch` : 널이 아닌 값을 반환할 때까지 각 키,값 쌍에 함수를 적용
+- `search` : 널이 아닌 값을 반환할 때까지 각 키,값 쌍에 함수를 적용
 
 모든 연산은 (키,값), (키), (값), (엔트리) 에 대해서 연산을 할 수 있도록 각종 메서드를 제공한다. (forEach, forEachKey, forEachValues, forEachEntry 등)
 
@@ -368,7 +372,9 @@ Optional<Integer> maxValue = Optional.ofNullable(map.reduceValues(parallelismThr
 
 ### 8.4.2 계수
 
-기존의 side 메서드 대신 맵의 매핑 개수를 반환하는 `mappingCount` 메서드를 제공한다.
+기존의 size 메서드 대신 맵의 매핑 개수를 반환하는 `mappingCount` 메서드를 제공한다.
+
+이를 통해 매핑의 개수가 int의 범위를 넘어서는 이후의 상황을 대처할 수 있게 된다.
 
 <br/>
 

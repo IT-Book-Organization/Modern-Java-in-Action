@@ -22,15 +22,15 @@
 
 ### Part Ⅲ 스트림과 람다를 이용한 효과적 프로그래밍
 
-- Chapter 8 - 컬렉션 API 개선
-- Chapter 9 - 리팩터링, 테스팅, 디버깅
-- Chapter 10 - 람다를 이용한 도메인 전용 언어
+- [Chapter 8 - 컬렉션 API 개선](/Chapter_08)
+- [Chapter 9 - 리팩터링, 테스팅, 디버깅](/Chapter_09)
+- [Chapter 10 - 람다를 이용한 도메인 전용 언어](/Chapter_10)
 
 ### Part Ⅳ 매일 자바와 함께
 
-- Chapter 11 - null 대신 Optional 클래스
+- [Chapter 11 - null 대신 Optional 클래스](/Chapter_11)
 - Chapter 12 - 새로운 날짜와 시간 API
-- Chapter 13 - 디폴트 메서드
+- [Chapter 13 - 디폴트 메서드](/Chapter_13)
 - Chapter 14 - 자바 모듈 시스템
 
 ### Part Ⅴ 개선된 자바 동시성
@@ -41,7 +41,7 @@
 
 ### Part Ⅵ 함수형 프로그래밍과 자바 진화의 미래
 
-- Chapter 18 - 함수형 관점으로 생각하기
-- Chapter 19 - 함수형 프로그래밍 기법
+- [Chapter 18 - 함수형 관점으로 생각하기](/Chapter_18)
+- [Chapter 19 - 함수형 프로그래밍 기법](/Chapter_19)
 - Chapter 20 - OOP와 FP의 조화 : 자바와 스칼라 비교
 - Chapter 21 - 결론 그리고 자바의 미래
