@@ -209,7 +209,7 @@ System.out.println(dishNames);
 
 <br/>
 
-만약 각 요리명의 길이도 알고 싶다면, 다음처럼 다른 map 메서드를 **연결(chaining)**할 수 있다.
+만약 각 요리명의 길이도 알고 싶다면, 다음처럼 다른 map 메서드를 <b>연결(chaining)</b>할 수 있다.
 
 ```java
 List<Integer> dishNameLengths = menu.stream()
